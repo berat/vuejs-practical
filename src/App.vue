@@ -1,16 +1,22 @@
 <template>
   <div id="app">
     <app-header />
-    {{ msg }} hello
+    <div class="container">
+      <div class="row">
+        <router-view />
+        <app-sidebar />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import AppHeader from "./components/header/header";
+import AppHeader from "./components/share/header";
+import AppSidebar from "./components/share/sidebar";
 
 export default {
   name: "app",
-  components: { AppHeader },
+  components: { AppHeader, AppSidebar },
   data() {
     return {
       msg: "Welcome to Your Vue.js App"

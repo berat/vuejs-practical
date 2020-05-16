@@ -5,11 +5,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
 import store from "./store";
+import router from "./routers";
 
 Vue.use(BootstrapVue);
 
 new Vue({
   el: "#app",
   render: h => h(App),
-  store
+  store,
+  router
 });
