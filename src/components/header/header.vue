@@ -11,15 +11,22 @@
         id="navbarSupportedContent"
         style="display: block;"
       >
-        <ul class="navbar-nav justify-content-end">
+        <ul class="navbar-nav justify-content-end" v-if="isLogin === true">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" @click="updateLogin">Profil</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav justify-content-end" v-else>
           <li class="nav-item">
             <a class="nav-link active" href="/home" aria-current="page">Home</a>
           </li>
-          <li class="nav-item" style="display: none;">
-            <a class="nav-link" href="/profile/null">Profil</a>
-          </li>
           <li class="nav-item" style="display: inherit;">
-            <a class="nav-link" href="/home" aria-current="page">Login</a>
+            <a class="nav-link" @click="updateLogin" aria-current="page"
+              >Login</a
+            >
           </li>
           <li class="nav-item" style="display: inherit;">
             <a class="nav-link" href="/sign-up">Register</a>
@@ -31,11 +38,14 @@
 </template>
 
 <script>
+import { mapState, matActions, mapActions } from "vuex";
+
 export default {
-  data() {
-    return {
-      msg: "Welcome to Your Vue.js App"
-    };
+  computed: {
+    ...mapState(["isLogin"])
+  },
+  methods: {
+    ...mapActions(["updateLogin"])
   }
 };
 </script>
