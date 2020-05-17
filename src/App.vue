@@ -12,7 +12,7 @@
 
 <script>
 import AppHeader from "./components/share/header";
-import AppSidebar from "./components/share/sidebar";
+import AppSidebar from "./components/pages/Sidebar";
 
 export default {
   name: "app",
