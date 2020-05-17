@@ -3,12 +3,27 @@
     <div class="card">
       <div class="card-header">Hoş Geldin</div>
       <div class="card-body">
-        <p>Merhaba <b>Berat</b>, Hoşgeldin.</p>
-        <a href="/home">Çıkış Yap</a>
+        <p>
+          Merhaba <b>{{ isName }}</b
+          >, Hoşgeldin.
+        </p>
+        <a @click="cikisYap" href="/">Çıkış Yap</a>
       </div>
     </div>
   </div>
 </template>
 <script>
-export default {};
+import { mapState, mapActions } from "vuex";
+export default {
+  computed: {
+    ...mapState(["isName"])
+  },
+  methods: {
+    ...mapActions(["logout"]),
+    cikisYap(e) {
+      e.preventDefault();
+      this.logout();
+    }
+  }
+};
 </script>

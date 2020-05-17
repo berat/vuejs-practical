@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand active" href="/home" aria-current="page">vue-practical</a>
+      <a class="navbar-brand active" href="/home" aria-current="page"
+        >vue-practical</a
+      >
       <button class="navbar-toggler" type="button">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,23 +12,18 @@
         id="navbarSupportedContent"
         style="display: block;"
       >
-        <ul class="navbar-nav justify-content-end" v-if="isLogin === true">
+        <ul class="navbar-nav justify-content-end">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page">Home</a>
+            <a class="nav-link active" href="/" aria-current="page">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link">Profil</a>
+          <li class="nav-item" v-if="!isLogin">
+            <a class="nav-link" href="/" aria-current="page">Login</a>
           </li>
-        </ul>
-        <ul class="navbar-nav justify-content-end" v-else>
-          <li class="nav-item">
-            <a class="nav-link active" href="/home" aria-current="page">Home</a>
-          </li>
-          <li class="nav-item" style="display: inherit;">
-            <a class="nav-link" aria-current="page">Login</a>
-          </li>
-          <li class="nav-item" style="display: inherit;">
+          <li class="nav-item" v-if="!isLogin">
             <a class="nav-link" href="/sign-up">Register</a>
+          </li>
+          <li class="nav-item" v-if="isLogin">
+            <a class="nav-link">Profil</a>
           </li>
         </ul>
       </div>

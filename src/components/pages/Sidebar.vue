@@ -1,9 +1,9 @@
 <template>
   <div class="col-4">
-    <app-register v-if="routePath == '/sign-up'" />
     <app-welcome v-if="routePath == '/' && isLogin" />
     <app-post v-if="routePath == '/' && isLogin" />
     <app-login v-if="routePath == '/' && !isLogin" />
+    <app-register v-if="routePath == '/sign-up'" />
   </div>
 </template>
 
