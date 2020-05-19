@@ -8,14 +8,29 @@
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="3"
+          v-model="post"
         ></textarea>
       </div>
-      <button type="submit" class="btn btn-primary form-control">
-        Add Post
-      </button>
+      <button @click="ekle" type="submit" class="btn btn-primary form-control">Add Post</button>
     </div>
   </form>
 </template>
 <script>
-export default {};
+import { mapState, mapActions } from "vuex";
+export default {
+  data() {
+    return { post: "" };
+  },
+  computed: {
+    ...mapState(["userID"])
+  },
+  methods: {
+    ...mapActions(["addPost"]),
+    ekle(e) {
+      let data = { post: this.post, id: this.userID };
+      e.preventDefault();
+      this.addPost(data);
+    }
+  }
+};
 </script>

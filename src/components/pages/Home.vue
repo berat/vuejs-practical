@@ -3,74 +3,15 @@
     <ul>
       <div class="pagination">
         <ul>
-          <li class="card mt-sm-4 mb-sm-6">
+          <li v-for="post in posts" v-bind:key="post._id" class="card mt-sm-4 mb-sm-6">
             <div class="card-body">
               <blockquote class="blockquote mb-0">
-                <p>
-                  Eğer varsa bug buradan çok kolay bir şekilde
-                  bildirebilirsiniz. Bu proje burada sonlanır!!!
-                </p>
+                <p>{{ post.post.substr(0, 280) }}</p>
                 <footer class="blockquote-footer">
-                  <b><a href="/profile/Berat">Berat</a></b>
-                  <cite>| 29 Ekim 2019</cite>
-                </footer>
-              </blockquote>
-            </div>
-          </li>
-          <li class="card mt-sm-4 mb-sm-6">
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>Basarili</p>
-                <footer class="blockquote-footer">
-                  <b><a href="/profile/dev.bedirhangul">dev.bedirhangul</a></b>
-                  <cite>| 18 Ekim 2019</cite>
-                </footer>
-              </blockquote>
-            </div>
-          </li>
-          <li class="card mt-sm-4 mb-sm-6">
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>heyy</p>
-                <footer class="blockquote-footer">
-                  <b><a href="/profile/Berat">Berat</a></b>
-                  <cite>| 18 Ekim 2019</cite>
-                </footer>
-              </blockquote>
-            </div>
-          </li>
-          <li class="card mt-sm-4 mb-sm-6">
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>hi</p>
-                <footer class="blockquote-footer">
-                  <b><a href="/profile/aasdasd">aasdasd</a></b>
-                  <cite>| 18 Ekim 2019</cite>
-                </footer>
-              </blockquote>
-            </div>
-          </li>
-          <li class="card mt-sm-4 mb-sm-6">
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>Uzun uğraşlar sonunda profil sayfası da halledildi</p>
-                <footer class="blockquote-footer">
-                  <b><a href="/profile/Berat">Berat</a></b>
-                  <cite>| 15 Ekim 2019</cite>
-                </footer>
-              </blockquote>
-            </div>
-          </li>
-          <li class="card mt-sm-4 mb-sm-6">
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>
-                  Sırada üye olan her kullanıcıya ait profil sayfası yapmak ve
-                  yönlendirmeleri sağlamak
-                </p>
-                <footer class="blockquote-footer">
-                  <b><a href="/profile/Berat">Berat</a></b>
-                  <cite>| 2 Ekim 2019</cite>
+                  <b>
+                    <a v-bind:href="link(post.who)">{{ post.who }}</a>
+                  </b>
+                  <cite>| {{ post.date }}</cite>
                 </footer>
               </blockquote>
             </div>
@@ -82,5 +23,23 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+import { mapState, mapActions } from "vuex";
+
+export default {
+  computed: {
+    ...mapState(["posts"])
+  },
+  methods: {
+    ...mapActions(["fullPost"]),
+    link(e) {
+      return `/profile/${e}`;
+    }
+  },
+  mounted() {
+    axios
+      .get("https://practical-react-server.herokuapp.com/v1/post/")
+      .then(response => this.fullPost(response.data));
+  }
+};
 </script>

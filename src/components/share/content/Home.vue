@@ -11,7 +11,9 @@
                   bildirebilirsiniz. Bu proje burada sonlanır!!!
                 </p>
                 <footer class="blockquote-footer">
-                  <b><a href="/profile/Berat">Berat</a></b>
+                  <b>
+                    <a href="/profile/Berat">Berat</a>
+                  </b>
                   <cite>| 29 Ekim 2019</cite>
                 </footer>
               </blockquote>
@@ -22,7 +24,9 @@
               <blockquote class="blockquote mb-0">
                 <p>Basarili</p>
                 <footer class="blockquote-footer">
-                  <b><a href="/profile/dev.bedirhangul">dev.bedirhangul</a></b>
+                  <b>
+                    <a href="/profile/dev.bedirhangul">dev.bedirhangul</a>
+                  </b>
                   <cite>| 18 Ekim 2019</cite>
                 </footer>
               </blockquote>
@@ -33,7 +37,9 @@
               <blockquote class="blockquote mb-0">
                 <p>heyy</p>
                 <footer class="blockquote-footer">
-                  <b><a href="/profile/Berat">Berat</a></b>
+                  <b>
+                    <a href="/profile/Berat">Berat</a>
+                  </b>
                   <cite>| 18 Ekim 2019</cite>
                 </footer>
               </blockquote>
@@ -44,7 +50,9 @@
               <blockquote class="blockquote mb-0">
                 <p>hi</p>
                 <footer class="blockquote-footer">
-                  <b><a href="/profile/aasdasd">aasdasd</a></b>
+                  <b>
+                    <a href="/profile/aasdasd">aasdasd</a>
+                  </b>
                   <cite>| 18 Ekim 2019</cite>
                 </footer>
               </blockquote>
@@ -55,7 +63,9 @@
               <blockquote class="blockquote mb-0">
                 <p>Uzun uğraşlar sonunda profil sayfası da halledildi</p>
                 <footer class="blockquote-footer">
-                  <b><a href="/profile/Berat">Berat</a></b>
+                  <b>
+                    <a href="/profile/Berat">Berat</a>
+                  </b>
                   <cite>| 15 Ekim 2019</cite>
                 </footer>
               </blockquote>
@@ -69,7 +79,9 @@
                   yönlendirmeleri sağlamak
                 </p>
                 <footer class="blockquote-footer">
-                  <b><a href="/profile/Berat">Berat</a></b>
+                  <b>
+                    <a href="/profile/Berat">Berat</a>
+                  </b>
                   <cite>| 2 Ekim 2019</cite>
                 </footer>
               </blockquote>

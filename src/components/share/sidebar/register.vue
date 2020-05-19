@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header">Register</div>
       <div class="card-body">
-        <form>
+        <form @submit.prevent="register">
           <div class="form-group">
             <input
               type="text"
@@ -12,6 +12,7 @@
               maxlength="16"
               class="form-control"
               placeholder="Username"
+              v-model="username"
             />
           </div>
           <div class="form-group">
@@ -20,6 +21,7 @@
               minlength="1"
               class="form-control"
               placeholder="Mail address"
+              v-model="mail"
             />
           </div>
           <div class="form-group">
@@ -28,6 +30,7 @@
               class="form-control"
               id="exampleInputPassword1"
               placeholder="Password"
+              v-model="password"
             />
           </div>
           <button type="submit" class="form-control btn btn-primary">
@@ -45,7 +48,23 @@
     </div>
   </div>
 </template>
-
 <script>
-export default {};
+import { mapActions } from "vuex";
+
+export default {
+  data() {
+    return { username: "", mail: "", password: "" };
+  },
+  methods: {
+    ...mapActions(["setRegister"]),
+    register() {
+      let data = {
+        username: this.username,
+        mail: this.mail,
+        password: this.password
+      };
+      this.setRegister(data);
+    }
+  }
+};
 </script>

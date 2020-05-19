@@ -9,21 +9,28 @@ Vue.use(VueCookies);
 
 const state = {
   isLogin: Vue.$cookies.get("isLogin") || false,
-  isName: Vue.$cookies.get("name") || false
+  isName: Vue.$cookies.get("name") || false,
+  userID: Vue.$cookies.get("userID") || false,
+  posts: ""
 };
 
 const mutations = {
-  setLogin(state, name) {
+  setLogin(state, data) {
     state.isLogin = true;
     Vue.$cookies.set("isLogin", true);
-    Vue.$cookies.set("name", name);
-    state.isName = name;
+    Vue.$cookies.set("name", data.name);
+    state.isName = data.name;
+    state.userID = data.id;
   },
   setLogout(state) {
     state.isLogin = false;
     Vue.$cookies.set("isLogin", false);
     Vue.$cookies.remove("name");
+    Vue.$cookies.remove("userID");
     state.isName = false;
+  },
+  fullePost(state, data) {
+    state.posts = data;
   }
 };
 
@@ -45,7 +52,11 @@ const actions = {
                 return value.nickName;
               })
             );
-            commit("setLogin", userName.slice(2, -2));
+            Vue.$cookies.set("userID", userToken.userid);
+            commit("setLogin", {
+              name: userName.slice(2, -2),
+              id: userToken.userid
+            });
           }
         );
       }
@@ -53,6 +64,36 @@ const actions = {
   },
   logout({ commit }) {
     commit("setLogout");
+  },
+  setRegister({ commit }, data) {
+    return Axios.post(
+      "https://practical-react-server.herokuapp.com/v1/auth/kayit-ol",
+      { nickName: data.username, email: data.mail, password: data.password }
+    ).then(response => console.log(response));
+  },
+  addPost({ commit, state }, data) {
+    console.log(data);
+    return Axios.post(
+      "https://practical-react-server.herokuapp.com/v1/post/paylas",
+      { post: data.post, who: data.id }
+    )
+      .then(response => {
+        let newList = [
+          ...state.post,
+          {
+            _id: response.data.post._id,
+            post: value,
+            who: response.data.post.who,
+            date: dateTime
+          }
+        ];
+        commit("fullePost", newList);
+      })
+      .catch(e => console.log(e));
+  },
+  fullPost({ commit }, data) {
+    console.log(data);
+    commit("fullePost", data);
   }
 };
 
