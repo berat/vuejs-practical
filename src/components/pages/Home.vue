@@ -19,7 +19,12 @@
                   <b>
                     <a v-bind:href="link(post.who)">{{ post.who }}</a>
                   </b>
-                  <cite>| {{ post.date }}</cite>
+                  <cite
+                    >| {{ post.date }}
+                    <b v-if="post.who === isName" @click="deleteItem(post._id)"
+                      >Delete</b
+                    ></cite
+                  >
                 </footer>
               </blockquote>
             </div>
@@ -55,12 +60,27 @@ export default {
     };
   },
   computed: {
-    ...mapState(["posts"])
+    ...mapState(["posts", "isName"])
   },
   methods: {
     ...mapActions(["fullPost"]),
     link(e) {
       return `/profile/${e}`;
+    },
+    deleteItem(id) {
+      axios
+        .post("https://practical-react-server.herokuapp.com/v1/post/sil", {
+          id: id
+        })
+        .then(response => {
+          let newPost = [...this.posts];
+          var count = null;
+          newPost.forEach((el, index) =>
+            el._id === id ? (count = index) : null
+          );
+          count !== null && newPost.splice(count, 1);
+          this.fullPost(newPost);
+        });
     }
   },
   mounted() {
