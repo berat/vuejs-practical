@@ -75,24 +75,24 @@ const actions = {
     console.log(data);
     return Axios.post(
       "https://practical-react-server.herokuapp.com/v1/post/paylas",
-      { post: data.post, who: data.id }
+      { post: data.sonData.post, who: data.sonData.id }
     )
       .then(response => {
         let newList = [
-          ...state.post,
+          ...data.posts,
           {
             _id: response.data.post._id,
-            post: value,
+            post: response.data.post.value,
             who: response.data.post.who,
-            date: dateTime
+            date: response.data.post.dateTime
           }
         ];
+        console.log(newList);
         commit("fullePost", newList);
       })
       .catch(e => console.log(e));
   },
   fullPost({ commit }, data) {
-    console.log(data);
     commit("fullePost", data);
   }
 };

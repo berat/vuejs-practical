@@ -11,23 +11,29 @@
           v-model="post"
         ></textarea>
       </div>
-      <button @click="ekle" type="submit" class="btn btn-primary form-control">Add Post</button>
+      <button @click="ekle" type="submit" class="btn btn-primary form-control">
+        Add Post
+      </button>
     </div>
   </form>
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
+
 export default {
   data() {
     return { post: "" };
   },
   computed: {
-    ...mapState(["userID"])
+    ...mapState(["userID", "posts"])
   },
   methods: {
     ...mapActions(["addPost"]),
     ekle(e) {
-      let data = { post: this.post, id: this.userID };
+      let data = {
+        posts: this.posts,
+        sonData: { post: this.post, id: this.userID }
+      };
       e.preventDefault();
       this.addPost(data);
     }

@@ -4,6 +4,9 @@
     <app-post v-if="routePath == '/' && isLogin" />
     <app-login v-if="routePath == '/' && !isLogin" />
     <app-register v-if="routePath == '/sign-up'" />
+    <div style="display: flex; justify-content: center; margin: 20px 0">
+      <gh-btns-star slug="berat/notebook" show-count></gh-btns-star>
+    </div>
   </div>
 </template>
 

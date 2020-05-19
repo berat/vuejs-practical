@@ -5,8 +5,11 @@
         <ul>
           <li
             id="tweet"
-            v-for="post in posts.slice(perPage*(currentPage - 1), perPage*(currentPage))"
-            v-bind:key="post._id"
+            v-for="(post, index) in posts.slice(
+              perPage * (currentPage - 1),
+              perPage * currentPage
+            )"
+            v-bind:key="index"
             class="card mt-sm-4 mb-sm-6"
           >
             <div class="card-body">
@@ -65,7 +68,7 @@ export default {
       .get("https://practical-react-server.herokuapp.com/v1/post/")
       .then(response => {
         this.rows = response.data.length;
-        this.fullPost(response.data);
+        this.fullPost(response.data.reverse());
       });
   }
 };
