@@ -56,3 +56,7 @@ body .card-body blockquote footer cite b:hover {
 .blockquote-footer b a {
   color: #6c757d
 }
+
+.overflow-auto .pagination .active {
+  background: none !important;
+}
