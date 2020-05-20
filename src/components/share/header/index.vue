@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand active" href="/" aria-current="page">vue-practical</a>
+      <a class="navbar-brand active" href="/" aria-current="page"
+        >vue-practical</a
+      >
       <button class="navbar-toggler" type="button">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -39,7 +41,6 @@ export default {
   methods: {
     ...mapActions(["updateLogin"]),
     profileLink(e) {
-      console.log(this.isName);
       return `/profile/${e}`;
     }
   }

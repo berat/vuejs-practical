@@ -25,7 +25,7 @@ const mutations = {
   },
   setLogout(state) {
     state.isLogin = false;
-    Vue.$cookies.set("isLogin", false);
+    Vue.$cookies.remove("isLogin");
     Vue.$cookies.remove("name");
     Vue.$cookies.remove("userID");
     state.isName = false;
@@ -74,7 +74,6 @@ const actions = {
     ).then(response => console.log(response));
   },
   addPost({ commit, state }, data) {
-    console.log(data);
     return Axios.post(
       "https://practical-react-server.herokuapp.com/v1/post/paylas",
       { post: data.sonData.post, who: data.sonData.id }
@@ -89,7 +88,6 @@ const actions = {
             date: response.data.post.dateTime
           }
         ];
-        console.log(newList);
         commit("fullePost", newList);
       })
       .catch(e => console.log(e));

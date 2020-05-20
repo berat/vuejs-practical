@@ -1,9 +1,9 @@
 <template>
   <div class="col-4">
-    <app-welcome v-if="routePath == '/' || routeName=='profile' && isLogin" />
-    <app-post v-if="routePath == '/' && isLogin" />
-    <app-login v-if="routePath == '/' && !isLogin" />
-    <app-register v-if="routePath == '/sign-up'" />
+    <app-welcome v-if="compore && isLogin" />
+    <app-post v-if="compore && isLogin" />
+    <app-login v-if="compore && !isLogin" />
+    <app-register v-if="compore && !isLogin" />
     <div style="display: flex; justify-content: center; margin: 20px 0">
       <gh-btns-star slug="berat/notebook" show-count></gh-btns-star>
     </div>
@@ -21,9 +21,8 @@ import { mapState } from "vuex";
 export default {
   components: { AppLogin, AppRegister, AppPost, AppWelcome },
   data() {
-    console.log(this.$route);
     return {
-      routePath: this.$route.path,
+      compore: this.$route.name == "homepage" || this.$route.name == "profile",
       routeName: this.$route.name
     };
   },
