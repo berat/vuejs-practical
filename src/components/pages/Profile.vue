@@ -5,7 +5,7 @@
         <ul>
           <li
             id="tweet"
-            v-for="(post, index) in posts.slice(
+            v-for="(post, index) in posts.filter((item) => item.who == $route.params.id).slice(
               perPage * (currentPage - 1),
               perPage * currentPage
             )"
@@ -88,8 +88,11 @@ export default {
     axios
       .get("https://practical-react-server.herokuapp.com/v1/post/")
       .then(response => {
-        this.rows = response.data.length;
-        this.fullPost(response.data.reverse());
+        let tempData = response.data.filter(
+          item => item.who === this.$route.params.id
+        );
+        this.rows = tempData.length;
+        this.fullPost(tempData.reverse());
       });
   }
 };

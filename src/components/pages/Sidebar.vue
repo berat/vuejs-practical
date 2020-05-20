@@ -1,6 +1,6 @@
 <template>
   <div class="col-4">
-    <app-welcome v-if="routePath == '/' && isLogin" />
+    <app-welcome v-if="routePath == '/' || routeName=='profile' && isLogin" />
     <app-post v-if="routePath == '/' && isLogin" />
     <app-login v-if="routePath == '/' && !isLogin" />
     <app-register v-if="routePath == '/sign-up'" />
@@ -21,8 +21,10 @@ import { mapState } from "vuex";
 export default {
   components: { AppLogin, AppRegister, AppPost, AppWelcome },
   data() {
+    console.log(this.$route);
     return {
-      routePath: this.$route.path
+      routePath: this.$route.path,
+      routeName: this.$route.name
     };
   },
   computed: {

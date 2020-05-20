@@ -11,9 +11,7 @@
           v-model="post"
         ></textarea>
       </div>
-      <button @click="ekle" type="submit" class="btn btn-primary form-control">
-        Add Post
-      </button>
+      <button @click="ekle" type="submit" class="btn btn-primary form-control">Add Post</button>
     </div>
   </form>
 </template>
@@ -30,13 +28,16 @@ export default {
   methods: {
     ...mapActions(["addPost"]),
     ekle(e) {
+      e.preventDefault();
       let data = {
         posts: this.posts,
         sonData: { post: this.post, id: this.userID }
       };
-      e.preventDefault();
       this.addPost(data);
     }
+  },
+  updated() {
+    this.ekle();
   }
 };
 </script>

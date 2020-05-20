@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "../components/pages/Home";
-import Register from "../components/pages/Sidebar";
+import Profile from "../components/pages/Profile";
 
 Vue.use(Router);
 
@@ -19,6 +19,11 @@ const router = new Router({
           component: Home
         }
       ]
+    },
+    {
+      path: "/profile/:id",
+      name: "profile",
+      component: Profile
     }
   ]
 });

@@ -1,17 +1,17 @@
 <template>
   <div class="mt-sm-4 mb-sm-6">
     <div class="card">
-      <div class="card-header">Hoş Geldin</div>
+      <div class="card-header">Welcome</div>
       <div class="card-body">
         <p>
-          Merhaba
-          <b>{{ isName }}</b>, Hoşgeldin.
+          Hello
+          <b>{{ isName }}</b>, welcome!
         </p>
         <p>
-          you have
+          You have
           <b v-text="ownerPost"></b> posts
         </p>
-        <a @click="cikisYap" href="/">Çıkış Yap</a>
+        <a @click="cikisYap" href="/">Logout</a>
       </div>
     </div>
   </div>
