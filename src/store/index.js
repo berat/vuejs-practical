@@ -11,7 +11,8 @@ const state = {
   isLogin: Vue.$cookies.get("isLogin") || false,
   isName: Vue.$cookies.get("name") || false,
   userID: Vue.$cookies.get("userID") || false,
-  posts: ""
+  posts: "",
+  ownerPost: 0
 };
 
 const mutations = {
@@ -31,6 +32,7 @@ const mutations = {
   },
   fullePost(state, data) {
     state.posts = data;
+    state.ownerPost = data.filter(item => item.who === state.isName).length;
   }
 };
 

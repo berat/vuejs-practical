@@ -4,8 +4,12 @@
       <div class="card-header">Hoş Geldin</div>
       <div class="card-body">
         <p>
-          Merhaba <b>{{ isName }}</b
-          >, Hoşgeldin.
+          Merhaba
+          <b>{{ isName }}</b>, Hoşgeldin.
+        </p>
+        <p>
+          you have
+          <b v-text="ownerPost"></b> posts
         </p>
         <a @click="cikisYap" href="/">Çıkış Yap</a>
       </div>
@@ -15,8 +19,11 @@
 <script>
 import { mapState, mapActions } from "vuex";
 export default {
+  data() {
+    return { sayi: 2 };
+  },
   computed: {
-    ...mapState(["isName"])
+    ...mapState(["isName", "posts", "ownerPost"])
   },
   methods: {
     ...mapActions(["logout"]),
