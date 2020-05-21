@@ -1,6 +1,16 @@
-# vue-practical
+# vuejs-practical
 
-> A Vue.js project
+> A project where I try to learn the coding standards of vue.js.
+
+The project I did is almost the same as I did for learning react. In this way, I could easily write an article that I can compare react and vue.js.
+
+## Demo
+
+[https://vuejs-practical.surge.sh/](https://vuejs-practical.surge.sh/)
+
+## Article
+
+I will add it...
 
 ## Build Setup
 
@@ -14,5 +24,3 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
