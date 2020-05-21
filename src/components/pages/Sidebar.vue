@@ -3,9 +3,9 @@
     <app-welcome v-if="compore && isLogin" />
     <app-post v-if="compore && isLogin" />
     <app-login v-if="compore && !isLogin" />
-    <app-register v-if="compore && !isLogin" />
+    <app-register v-if="routeName=='register' && !isLogin" />
     <div style="display: flex; justify-content: center; margin: 20px 0">
-      <gh-btns-star slug="berat/notebook" show-count></gh-btns-star>
+      <gh-btns-star slug="berat/vuejs-practical" show-count></gh-btns-star>
     </div>
   </div>
 </template>
